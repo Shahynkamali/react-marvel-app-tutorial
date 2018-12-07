@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App__Component">
-       <Header title="Marvel Comic explorer" message="Search and explore your marvel peeps"/>
+       <Header title="Marvel Comic explorer" message="Search and explore your favorite Marvel characters!"/>
        <Footer />
       </div>
     );
