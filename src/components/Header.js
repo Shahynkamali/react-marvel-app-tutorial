@@ -11,7 +11,7 @@ function Header(props) {
 		 <header className="Header__Component">
           <h1>{props.title}</h1>
           <p>{props.message}</p>
-          <Filterbar />
+          <Filterbar onFilterSubmit={props.onFilterSubmit} />
         </header>
 	); 
 };
