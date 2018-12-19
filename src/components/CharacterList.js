@@ -45,7 +45,9 @@ class CharacterList extends Component {
 
   renderCharacters() {
     const characterList = this.state.characters.map((character, index) => {
-      return (<div className="character-card" key={`${character.id}-${index}`}>
+      return (<div className="character-card" key={`${character.id}-${index}`}
+        onClick={() => this.props.onSelectedCharacterChange(character.id)}
+        >
         <img alt="" src={`${character.thumbnail.path}.${character.thumbnail.extension}`}/>
         <p>{character.name}</p>
       </div>);

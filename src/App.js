@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CharacterList from './components/CharacterList';
+import CharacterDetail from './components/CharacterDetail';
 import './App.scss';
 
 class App extends Component {
@@ -10,9 +11,17 @@ class App extends Component {
     this.state = {};
   }
 
+
   onFilterSubmit = (searchQuery) => {
     this.setState({
-      searchQuery: searchQuery
+      searchQuery: searchQuery,
+      selectedCharacterId: null
+    })
+  }
+
+   onSelectedCharacterChange = (charId) => {
+    this.setState({ 
+      selectedCharacterId: charId
     })
   }
 
@@ -24,7 +33,11 @@ class App extends Component {
           message="Search and explore your favourite Marvel characters!"
           onFilterSubmit={this.onFilterSubmit}
         />
-        <CharacterList searchQuery={this.state.searchQuery}/>
+        <CharacterList 
+        searchQuery={this.state.searchQuery}
+        onSelectedCharacterChange={this.onSelectedCharacterChange}
+        />
+        <CharacterDetail selectedCharacterId={this.state.selectedCharacterId} />
         <Footer />
       </div>
     );
