@@ -15,12 +15,22 @@ class CharacterList extends Component {
     this.fetchCharacters();
   }
 
+  componentDidUpdate(prevProps, prevState){
+    if(prevProps.searchQuery !== this.props.searchQuery){
+      this.setState({
+        characters:[]
+      },this.fetchCharacters)
+      
+    } 
+  }
+
   async fetchCharacters(){
     try {
       const charactersData = await axios.get("https://gateway.marvel.com/v1/public/characters", {
         params: {
-          apikey: "6a9e903790k74f30d48", // Use your API key here
-          limit: 50
+          apikey: "4824609afd6eb307ba6939e0fef22e39", // Use your API key here
+          limit: 50,
+          nameStartsWith: this.props.searchQuery ? this.props.searchQuery: null
         }
       });
 
